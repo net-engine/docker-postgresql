@@ -1,6 +1,6 @@
 #!/bin/sh
 
-/sbin/setuser netengine /usr/lib/postgresql/9.3/bin/pg_ctl init -D /shared-data/postgresql
+/sbin/setuser netengine /usr/lib/postgresql/9.3/bin/pg_ctl init -o "-E UTF8" -D /shared-data/postgresql
 /sbin/setuser netengine /usr/lib/postgresql/9.3/bin/pg_ctl start -w -D /config -l /shared-logs/postgresql.log
 /sbin/setuser netengine psql --dbname postgres --host /config --username netengine -c "alter user netengine with password 'netengine123';"
 /sbin/setuser netengine /usr/lib/postgresql/9.3/bin/pg_ctl stop -w -D /config -l /shared-logs/postgresql.log

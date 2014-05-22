@@ -1,0 +1,6 @@
+{
+  "service": {
+    "name": "postgresql",
+    "tags": ["master"]
+  }
+}

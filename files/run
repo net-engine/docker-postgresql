@@ -1,2 +1,4 @@
 #!/bin/sh
+
+source /consul/variables
 exec /sbin/setuser netengine /usr/lib/postgresql/9.3/bin/postgres -D /config >> /shared-logs/postgresql.log 2>&1

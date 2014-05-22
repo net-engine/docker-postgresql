@@ -1,4 +1,4 @@
-FROM docker.netengine.com.au:443/base:0.0.2
+FROM netengine/base:0.1.1
 MAINTAINER team@netengine.com.au
 
 # Install postgresql
@@ -10,6 +10,7 @@ RUN ansible local --connection=local -m apt -a "pkg=postgresql-contrib-9.3 state
 
 # Configure postgresql
 ADD files /config
+RUN cp /config/postgresql_service.json /consul/config/postgresql_service.json
 RUN chown -R netengine:netengine /config
 RUN ansible local --connection=local -m file -a "state=directory path=/etc/service/postgres owner=root group=root"
 RUN ansible local --connection=local -m copy -a "src=/config/run dest=/etc/service/postgres/run owner=root group=root mode=0555"
